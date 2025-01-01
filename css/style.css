@@ -98,6 +98,9 @@ h6 {
   position: relative;
   overflow: hidden;
 }
+.sitenames{
+  font-size: 10px;
+}
 
 .pulsating-play-btn:before {
   content: "";
