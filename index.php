@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +29,25 @@
 
   <!-- Main CSS File -->
   <link href="css/style.css" rel="stylesheet">
+
+  <style>
+    .hero-img img {
+      border-radius: 50%; /* Makes the image a perfect circle */
+      width: 287px; /* Ensure width and height are equal */
+      height: 285px;
+      object-fit: cover; /* Ensures the image fits within the circle */
+      animation: moveUpDown 3s infinite ease-in-out; /* Adds the up-and-down movement */
+    }
+
+    @keyframes moveUpDown {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+  </style>
 
   <!-- =======================================================
   * Template Name: Yummy
@@ -88,7 +110,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="index.html#book-a-table">Book a Table</a>
+      <a class="btn-getstarted" href="index.php#book-a-table">Book a Table</a>
 
     </div>
   </header>
@@ -109,7 +131,7 @@
             </div>
           </div>
           <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-            <img src="img/" class="img-fluid" alt="">
+            <img src="img/hero-img 1.jpg" class="img-fluid" alt="">
           </div>
         </div>
       </div>
@@ -944,7 +966,7 @@
                   <input type="time" class="form-control" name="time" id="time" placeholder="Time" required="">
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="number" class="form-control" name="people" id="people" placeholder="# of people" required="">
+                  <input type="number" class="form-control" name="people" id="people" placeholder="Number of people" required="">
                 </div>
               </div>
 
@@ -954,7 +976,9 @@
 
               <div class="text-center mt-3">
                 <div class="loading">Loading</div>
-                <div class="error-message"></div>
+                <div class="error-message">
+                  
+                </div>
                 <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
                 <button type="submit">Book a Table</button>
               </div>
@@ -1102,7 +1126,9 @@
 
             <div class="col-md-12 text-center">
               <div class="loading">Loading</div>
-              <div class="error-message"></div>
+              <div class="error-message">
+
+              </div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
 
               <button type="submit">Send Message</button>
@@ -1188,7 +1214,7 @@
 
   <!-- Vendor JS Files -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/php-email-form/validate.js"></script>
+  <!--script src="vendor/php-email-form/validate.js"></script-->
   <script src="vendor/aos/aos.js"></script>
   <script src="vendor/glightbox/js/glightbox.min.js"></script>
   <script src="vendor/purecounter/purecounter_vanilla.js"></script>

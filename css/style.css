@@ -171,13 +171,17 @@ h6 {
 ------------------------------*/
 .php-email-form .error-message {
   display: none;
- /* background: #df1529; */
- background: green;
+  background: #df1529; 
+ /*background: green; */
   color: #ffffff;
   text-align: left;
   padding: 15px;
   margin-bottom: 24px;
   font-weight: 600;
+}
+
+.d-block {
+  display: block;
 }
 
 .php-email-form .sent-message {
@@ -189,6 +193,8 @@ h6 {
   margin-bottom: 24px;
   font-weight: 600;
 }
+
+
 
 .php-email-form .loading {
   display: none;

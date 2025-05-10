@@ -1,45 +1,87 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+require __DIR__ . '/../PHPMailer-master/src/PHPMailer.php';
+require __DIR__ . '/../PHPMailer-master/src/SMTP.php';
+require __DIR__ . '/../PHPMailer-master/src/Exception.php';
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+// Show errors (for debugging)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-  $book_a_table = new PHP_Email_Form;
-  $book_a_table->ajax = true;
-  
-  $book_a_table->to = $receiving_email_address;
-  $book_a_table->from_name = $_POST['name'];
-  $book_a_table->from_email = $_POST['email'];
-  $book_a_table->subject = "New table booking request from the website";
+// Sanitize user inputs
+$name    = htmlspecialchars($_POST['name']);
+$email   = htmlspecialchars($_POST['email']);
+$phone   = htmlspecialchars($_POST['phone']);
+$date    = htmlspecialchars($_POST['date']);
+$time    = htmlspecialchars($_POST['time']);
+$people  = htmlspecialchars($_POST['people']);
+$message = htmlspecialchars($_POST['message']);
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $book_a_table->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
-
-  $book_a_table->add_message( $_POST['name'], 'Name');
-  $book_a_table->add_message( $_POST['email'], 'Email');
-  $book_a_table->add_message( $_POST['phone'], 'Phone', 4);
-  $book_a_table->add_message( $_POST['date'], 'Date', 4);
-  $book_a_table->add_message( $_POST['time'], 'Time', 4);
-  $book_a_table->add_message( $_POST['people'], '# of people', 1);
-  $book_a_table->add_message( $_POST['message'], 'Message');
-
-  echo $book_a_table->send();
+$mail = new PHPMailer(true);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Status</title>
+  <link href="../img/dish-regular-24.png" rel="icon"> <!-- Corrected path -->
+  <link rel="stylesheet" href="form.css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<?php
+try {
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'imranasalis17@gmail.com';
+    $mail->Password   = 'jqxlnnkxzkguxbap'; // Gmail App Password
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port       = 465;
+
+    $mail->Debugoutput = 'html';
+
+    $mail->setFrom($email, $name);
+    $mail->addAddress('imranasalis17@gmail.com'); // Your receiving email
+
+    $mail->isHTML(true);
+    $mail->Subject = "New table booking request from the website";
+    $mail->Body    = "
+        <strong>Name:</strong> $name<br>
+        <strong>Email:</strong> $email<br>
+        <strong>Phone:</strong> $phone<br>
+        <strong>Date:</strong> $date<br>
+        <strong>Time:</strong> $time<br>
+        <strong>Number of People:</strong> $people<br>
+        <strong>Message:</strong> " . nl2br($message);
+    $mail->AltBody = "Name: $name\nEmail: $email\nPhone: $phone\nDate: $date\nTime: $time\nPeople: $people\nMessage:\n$message";
+
+    $mail->send();
+
+    echo '<div class="success-message">';
+    echo '<strong>Name:</strong> ' . $name . '<br>';
+    echo '<strong>Email:</strong> ' . $email . '<br>';
+    echo '<strong>Phone:</strong> ' . $phone . '<br>';
+    echo '<strong>Date:</strong> ' . $date . '<br>';
+    echo '<strong>Time:</strong> ' . $time . '<br>';
+    echo '<strong>Number of People:</strong> ' . $people . '<br>';
+    echo '<strong>Message:</strong> ' . nl2br($message) . '<br><br>';
+    echo '<div class="echo">Your booking request has been sent successfully! </div>';
+    echo '</div>';
+} catch (Exception $e) {
+    echo '<div class="error-message">';
+    echo 'Booking request could not be sent. Error: ' . $mail->ErrorInfo;
+    echo '</div>';
+}
+?>
+
+<div class="back-button1">
+    <button><a href="../index.php">Back to Home</a></button> <!-- Corrected path -->
+</div>
+</body>
+</html>
