@@ -75,7 +75,7 @@
         1L1dKr4W1hbBexNYZ1MxfIEi3sEhPfh+W6cqQLG4yPiuy6naTecyP/rudCmIArzn266DefxLcv1qJCwPMsy
         Lveky02FFvNR9jvxI3lxEKc6QKIYj2B01j+k/jvqml30+2PYn61upMxY3wCJ1rA6rx1NTh3KPWlEQGtxc6rI
         6Jp1UrZsWo/OppTi1+qc6PTgFL1aNXdZFEEYlbSPe1jRdE+dIihMomazvgP+APzwThkph6ZMAAAAAElFTkSuQmCC" alt="Logo pic of a bowl"/>
-        <h1 class="sitename">imrana's Kitchen</h1>
+        <h1 class="sitename">Kitchen</h1>
         <span>.</span>
       </a>
 
