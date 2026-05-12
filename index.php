@@ -63,7 +63,7 @@
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+      <a href="index.php" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="data:image/png;base64,iVBORw0KGgoAAA
         ANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAd9JREFUSEu11U+oTVE
@@ -75,7 +75,7 @@
         1L1dKr4W1hbBexNYZ1MxfIEi3sEhPfh+W6cqQLG4yPiuy6naTecyP/rudCmIArzn266DefxLcv1qJCwPMsy
         Lveky02FFvNR9jvxI3lxEKc6QKIYj2B01j+k/jvqml30+2PYn61upMxY3wCJ1rA6rx1NTh3KPWlEQGtxc6rI
         6Jp1UrZsWo/OppTi1+qc6PTgFL1aNXdZFEEYlbSPe1jRdE+dIihMomazvgP+APzwThkph6ZMAAAAAElFTkSuQmCC" alt="Logo pic of a bowl"/>
-        <h1 class="sitename">Kitchen</h1>
+        <h1 class="sitename">imrana's Kitchen</h1>
         <span>.</span>
       </a>
 
